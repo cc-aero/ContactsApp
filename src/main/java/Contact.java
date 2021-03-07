@@ -60,7 +60,7 @@ public class Contact {
         //  Phone number must be:
         //      - 11 Digits
         //      - Starts with '07'
-        if(phone.length() != 11 | phone.startsWith("07")){
+        if(phone.length() != 11 | !(phone.startsWith("07"))){
             throw new PhoneException();
         }
     }

@@ -11,7 +11,7 @@ class ContactTest {
     @Test
     @Description("First Name Below 3 Chars")
 
-    void validateFirstNameLessThan() throws FirstNameException {
+    void validateFirstNameLessThan(){
         try {
             Contact.validateFirstName("aa");
             fail("Failed to catch invalid name");
@@ -35,7 +35,7 @@ class ContactTest {
     void validateLastNameLessThan(){
         try {
             Contact.validateLastName("av");
-            fail();
+            fail("Failed to catch invalid name");
         }catch (LastNameException e){
             assertEquals(0,0);  //Cheeky workaround as I forgot how to pass test cleanly
         }
@@ -45,10 +45,30 @@ class ContactTest {
     void validateLastNameMoreThan(){
         try {
             Contact.validateLastName("onetwothreefourfivesixseveneightnineteneleven");
-            fail();
+            fail("Failed to catch invalid name");
         }catch (LastNameException e){
             assertEquals(0,0);  //Cheeky workaround as I forgot how to pass test cleanly
         }
+    }
 
+    @Test
+    @Description("Phone Number Not 11 Chars")
+    void validatePhoneNumberNotEleven(){
+        try {
+            Contact.validatePhoneNumber("0734534545");
+            fail("Failed to catch invalid phone number");
+        }catch (PhoneException e){
+            assertEquals(0,0);  //Cheeky workaround as I forgot how to pass test cleanly
+        }
+    }
+    @Test
+    @Description("Phone Number Not Starting With '07'")
+    void validatePhoneNumberNotOSeven(){
+        try {
+            Contact.validatePhoneNumber("06345345457");
+            fail("Failed to catch invalid phone number");
+        }catch (PhoneException e){
+            assertEquals(0,0);  //Cheeky workaround as I forgot how to pass test cleanly
+        }
     }
 }
