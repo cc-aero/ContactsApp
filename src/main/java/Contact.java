@@ -4,7 +4,7 @@ public class Contact {
     private String firstName;
     private String lastName;
     private String phone;
-    private int id;
+    private String id;
 
     public String getFirstName() {
         return firstName;
@@ -30,11 +30,11 @@ public class Contact {
         this.phone = phone;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -64,8 +64,9 @@ public class Contact {
             throw new PhoneException();
         }
     }
-
-    public Contact(String firstName,String lastName, String phone, int id){
+    public Contact(){
+    }
+    public Contact(String firstName,String lastName, String phone, String id){
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = phone;
