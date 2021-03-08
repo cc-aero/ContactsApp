@@ -101,4 +101,15 @@ class ContactTest {
             fail("Valid phone number not accepted");
         }
     }
+
+    @Test
+    @Description("Input Validation Invalid")
+    void inputValidationInvalid(){
+        Assertions.assertEquals(false,InputValidator.validateInput("4"));
+    }
+    @Test
+    @Description("Input Validation Valid")
+    void inputValidationValid(){
+        Assertions.assertEquals(true,InputValidator.validateInput("2"));
+    }
 }

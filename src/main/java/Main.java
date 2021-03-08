@@ -1,10 +1,9 @@
-import java.util.List;
-import java.util.Scanner;
-import java.util.UUID;
-
+import java.util.*;
+import java.util.Arrays.*;
 public class Main {
-    private static List<Contact> contactList;
+    private static ArrayList<Contact> contactList = new ArrayList<Contact>();
     private static Scanner scanner = new Scanner(System.in);
+
 
 
     private static void addContactInterface(){
@@ -54,24 +53,40 @@ public class Main {
         id = UUID.randomUUID().toString();
         contact.setId(id);
         contactList.add(contact);
-        System.out.println(contactList.toArray());
+    }
+
+    private static void viewContactsInterface(){
+        System.out.println("\nYou have "+contactList.size()+" contacts stored."+
+                    "\n"+   "Name            Phone Number                UUID");
+        for (int iter = 0; iter < contactList.size(); iter++){
+            Contact currentContact = contactList.get(iter);
+            System.out.print(currentContact.getFirstName()+
+                    " "+currentContact.getLastName()+
+                    "  "+currentContact.getPhone()+
+                    "  "+currentContact.getId());
+        }
     }
 
     public static void main(String[] args) {
         String command;
+        boolean valid;
         System.out.println(
-                            "\n--------------------------=[Welcome to Contacts CLI!]=--------------------------\n");
+                            "\n--------------------------=[Welcome to Contacts CLI!]=--------------------------");
         while(true){
             System.out.println(
-                            "\n                               Choose an Option:"+
+                            "\n\n\n                               Choose an Option:"+
                             "\n\n                                1. Add Contact"+
                             "\n                                2. View Contacts"+
                             "\n                                3. Exit");
             System.out.print("\nccli>");
             command = scanner.next();
-            if(command.equals("3")){break;}
-            if(command.equals("2")){break;}
-            if(command.equals("1")){addContactInterface();}
+            valid = InputValidator.validateInput(command);
+            if(command.equals("3") | valid){break;}
+            if(command.equals("2") | valid){viewContactsInterface();}
+            if(command.equals("1") | valid){addContactInterface();}
+            if(!valid){
+                System.out.println("Invalid Input.");
+            }
 
         }
     }
