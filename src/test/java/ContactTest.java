@@ -29,6 +29,16 @@ class ContactTest {
             assertEquals(0,0);  //Cheeky workaround as I forgot how to pass test cleanly
         }
     }
+    @Test
+    @Description("Valid First Name")
+    void validateFirstNameValid(){
+        try {
+            Contact.validateFirstName("Kevin");
+            assertEquals(0,0);  //Cheeky workaround as I forgot how to pass test cleanly
+        }catch (FirstNameException e){
+            fail("Valid first name not accepted");
+        }
+    }
 
     @Test
     @Description("Last Name Below 4 Chars")
@@ -50,6 +60,16 @@ class ContactTest {
             assertEquals(0,0);  //Cheeky workaround as I forgot how to pass test cleanly
         }
     }
+    @Test
+    @Description("Valid Last Name")
+    void validateLastNameValid(){
+        try {
+            Contact.validateLastName("Samuels");
+            assertEquals(0,0);  //Cheeky workaround as I forgot how to pass test cleanly
+        }catch (LastNameException e){
+            fail("Valid last name not accepted");
+        }
+    }
 
     @Test
     @Description("Phone Number Not 11 Chars")
@@ -69,6 +89,16 @@ class ContactTest {
             fail("Failed to catch invalid phone number");
         }catch (PhoneException e){
             assertEquals(0,0);  //Cheeky workaround as I forgot how to pass test cleanly
+        }
+    }
+    @Test
+    @Description("Valid Phone Number")
+    void validatePhoneNumberValid(){
+        try {
+            Contact.validatePhoneNumber("07485723756");
+            assertEquals(0,0);  //Cheeky workaround as I forgot how to pass test cleanly
+        }catch (PhoneException e){
+            fail("Valid phone number not accepted");
         }
     }
 }
