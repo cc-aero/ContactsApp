@@ -4,8 +4,6 @@ public class Main {
     private static ArrayList<Contact> contactList = new ArrayList<Contact>();
     private static Scanner scanner = new Scanner(System.in);
 
-
-
     private static void addContactInterface(){
         Contact contact = new Contact();
         String contactFirstName;
@@ -37,7 +35,6 @@ public class Main {
                 System.out.println("                                Please Try Again");
             }
         }
-
         while (true){
             System.out.println( "                             Enter Contact Phone Number:\n\n");
             System.out.print("addcontact>");
@@ -87,7 +84,6 @@ public class Main {
             if(!valid){
                 System.out.println("Invalid Input.");
             }
-
         }
     }
 }
